@@ -14,6 +14,12 @@ class Utils:
 
     base_url = 'https://oslusiadas.org/'
 
+    def parse_scrapy_response(self, response_array):
+        response_array[0] = ''
+        response_array[1] = ''
+        array_with_text = list(filter(lambda x: x != "\n", response_array))
+        return array_with_text
+
     def generate_chants_links(self):
         urls = []
         for chant, number_of_chants in self.chants_stanzas.items():
