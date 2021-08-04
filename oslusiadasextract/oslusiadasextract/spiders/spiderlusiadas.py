@@ -1,10 +1,14 @@
 import scrapy
+from oslusiadasextract.utils import Utils
+
 
 class SpiderlusiadasSpider(scrapy.Spider):
     name = 'spiderlusiadas'
-    start_urls = ['https://oslusiadas.org/i/2']
+    utils = Utils()
+    start_urls = utils.generate_chants_links()
 
     def parse(self, response):
+        utils = Utils()
         array_with_text = response.xpath('//div[@class="uk-panel uk-panel-box estrofe"]/descendant::text()').extract()
         array_with_text[0] = ''
         array_with_text[1] = ''
