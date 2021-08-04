@@ -10,8 +10,10 @@ class SpiderlusiadasSpider(scrapy.Spider):
 
     def parse(self, response):
         array_with_text = response.xpath('//div[@class="uk-panel uk-panel-box estrofe"]/descendant::text()').extract()
+
         current_url = response.request.url
         chant_info = utils.parse_chant_url(current_url)
+
         chant_text = ' '.join(utils.parse_scrapy_response(array_with_text)).strip()
         print({"chant_number": chant_info['chant_number'],
                "stranza": chant_info['stranza'],
