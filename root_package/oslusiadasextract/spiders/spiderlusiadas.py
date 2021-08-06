@@ -1,6 +1,7 @@
 import scrapy
 from oslusiadasextract.utils import Utils
-from oslusiadasextract.mongo_connection import MongoConnection
+from oslusiadasextract.dbconnections.mongo_connection import MongoConnection
+
 utils = Utils()
 mongo_connection = MongoConnection()
 
@@ -17,7 +18,8 @@ class SpiderlusiadasSpider(scrapy.Spider):
         chant_info = utils.parse_chant_url(current_url)
         chant_text = ' '.join(utils.parse_scrapy_response(array_with_text)).strip()
 
-        mongo_connection.insert_chant({"chant_number": chant_info['chant_number'],
+        insert_result = mongo_connection.insert_chant({"chant_number": chant_info['chant_number'],
                                        "stranza": chant_info['stranza'],
                                         "text": chant_text})
+        print(mongo_connection.get_chant(1, 1))
         pass

@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 
-
 class MongoConnection:
     mongo_client = MongoClient()
     db_lusiadas = mongo_client.lusiadas_chants
@@ -13,3 +12,5 @@ class MongoConnection:
     def get_chant(self, chant_number, stranza):
         chant = self.chants_collections.find_one({"chant_number": chant_number, "stranza": stranza})
         return chant
+
+
