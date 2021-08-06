@@ -46,7 +46,7 @@ class Utils:
             url_chant = self.base_url + chant + '/'
             urls.append(url_chant)
             for chant_stanza in range(number_of_chants - 1):
-                urls.append(url_chant + str(chant_stanza + 2) + '/')
+                urls.append(url_chant + str(chant_stanza + 2))
 
         return urls
 
