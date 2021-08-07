@@ -17,6 +17,10 @@ class SpiderlusiadasSpider(scrapy.Spider):
         chant_info = utils.parse_chant_url(current_url)
         chant_text = ' '.join(utils.parse_scrapy_response(array_with_text)).strip()
 
+        print(chant_info['chant_number'])
+        print(chant_info['stranza'])
+        print(chant_text)
+
         mongo_connection.insert_chant({"chant_number": chant_info['chant_number'],
                                        "stranza": chant_info['stranza'],
                                         "text": chant_text})
