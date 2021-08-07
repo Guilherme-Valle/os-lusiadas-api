@@ -2,8 +2,5 @@
 *.iml
 *.xml
 .idea
-/idea
-idea
-venv
-/venv
-.venv
+.idea/
+venv/
