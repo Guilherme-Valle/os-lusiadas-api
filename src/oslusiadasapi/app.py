@@ -7,6 +7,9 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/lusiadas_chants"
 mongo = PyMongo(app)
 
+@app.route("/")
+def hello():
+    return "<h1>Hello world Lusiadas API!</h1>"
 
 @app.route("/chant/<chant_number>/<stranza>")
 def get_chant(chant_number, stranza):
@@ -18,4 +21,4 @@ def get_chant(chant_number, stranza):
         chant = dumps(chant) 
         return chant
 
-    return jsonify(error=500, text="Canto não encontrado"), 500
+    return jsonify(error=500, text="Canto não encontrado"), 500 
