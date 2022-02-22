@@ -22,3 +22,6 @@ def get_chant(chant_number, stranza):
         return chant
 
     return jsonify(error=500, text="Canto não encontrado"), 500 
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
